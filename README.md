@@ -77,55 +77,18 @@ Analogo a digitalWrite, evita controlli su pin PWM e NON disabilita gli interrup
 ------------
 
 # Tipi di Dati
-I seguenti tipi di dati vengono utilizzati dai metodi della libreria.
+I seguenti tipi di dati vengono utilizzati dalle funzioni della libreria.
 
 ------------
 
 ```c
-SUSI_DIRECTION
+typedef struct {
+    uint8_t pinPort;
+    uint8_t pinBitMask;
+    volatile uint8_t* pinReg;
+    volatile uint8_t* pinOut;
+} pinData;
 ```
-Tipo *enum*, identifica *simbolicamente* la direzione trasmessa dal Decoder Master: </br>
-- SUSI_DIR_REV : Direzione *reverse*
-- SUSI_DIR_FWD : Direzione *forward*
+Struttura dove vengono salvati i dati dei pin per essere utilizzati dalle funzioni.
 
-------------
-
-```c
-SUSI_FN_GROUP
-```
-Tipo *enum*, identifica *simbolicamente* il gruppo di Funzioni Digitali trasmesse dal Decoder Master:</br>
-- SUSI_FN_0_4 : Funzioni dalla 0 alla 4
-- SUSI_FN_5_12 : Funzioni dalla 5 alla 12
-- SUSI_FN_13_20 : Funzioni dalla 13 alla 20
-- SUSI_FN_21_28 : Funzioni dalla 21 alla 28
-- SUSI_FN_29_36 : Funzioni dalla 29 alla 36
-- SUSI_FN_37_44 : Funzioni dalla 37 alla 44
-- SUSI_FN_45_52 : Funzioni dalla 45 alla 52
-- SUSI_FN_53_60 : Funzioni dalla 53 alla 60
-- SUSI_FN_61_68 : Funzioni dalla 61 alla 68
-
-------------
-
-```c
-SUSI_AUX_GROUP
-```
-Tipo *enum*, identifica *simbolicamente* il gruppo di AUXs trasmesse dal Decoder Master:</br>
-- SUSI_AUX_1_8 : AUX dalla 1 alla 8
-- SUSI_AUX_9_16 : AUX dalla 9 alla 16
-- SUSI_AUX_17_24 : AUX dalla 17 alla 24
-- SUSI_AUX_25_32 : AUX dalla 25 alla 32
-
-------------
-
-```c
-SUSI_AN_FN_GROUP
-```
-Tipo *enum*, identifica *simbolicamente* il gruppo di Funzioni Analogiche trasmesse dal Decoder Master:</br>
-- SUSI_AN_FN_0_7 : Funzioni Analogiche dalla 0 alla 7
-- SUSI_AN_FN_8_15 : Funzioni Analogiche dalla 8 alla 15
-- SUSI_AN_FN_16_23 : Funzioni Analogiche dalla 16 alla 23
-- SUSI_AN_FN_24_31 : Funzioni Analogiche dalla 24 alla 31
-- SUSI_AN_FN_32_39 : Funzioni Analogiche dalla 32 alla 39
-- SUSI_AN_FN_40_47 : Funzioni Analogiche dalla 40 alla 47
-- SUSI_AN_FN_48_55 : Funzioni Analogiche dalla 48 alla 55
-- SUSI_AN_FN_56_63 : Funzioni Analogiche dalla 56 alla 63
+**Ogni Struct occupa 6 Byte in SRAM.**
