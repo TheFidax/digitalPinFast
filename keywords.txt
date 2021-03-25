@@ -1,0 +1,10 @@
+FastDigitalPin	KEYWORD1
+
+pinData	LITERAL1
+
+//////////////////////// 
+
+determine_pinData	KEYWORD2
+FastPinMode	KEYWORD2
+FastDigitalRead	KEYWORD2
+FastDigitalWrite	KEYWORD2
