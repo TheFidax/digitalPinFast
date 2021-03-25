@@ -1,6 +1,6 @@
 # Indice
 * [Introduzione Rcn600 SUSI](#Rcn600-SUSI)
-* [Metodi Disponibili](#Metodi-Obbligatori)
+* [Funzioni Disponibili](#Funzioni-Disponibili)
 * [Tipi di Dati](#Tipi-di-Dati)
 
 ------------
@@ -64,6 +64,18 @@ Analogo a digitalRead, evita controlli su pin PWM e NON disabilita gli interrupt
 
 ------------
 
+```c
+void FastDigitalWrite(pinData pin, uint8_t val);
+```
+Analogo a digitalWrite, evita controlli su pin PWM e NON disabilita gli interrupt.</br>
+- Input:
+  - la struct contente i dati del pin di cui si vuole modificare lo stato 
+  - il nuovo stato del pin
+- Restituisce:
+  - nulla
+
+------------
+
 # Tipi di Dati
 I seguenti tipi di dati vengono utilizzati dai metodi della libreria.
 
@@ -117,25 +129,3 @@ Tipo *enum*, identifica *simbolicamente* il gruppo di Funzioni Analogiche trasme
 - SUSI_AN_FN_40_47 : Funzioni Analogiche dalla 40 alla 47
 - SUSI_AN_FN_48_55 : Funzioni Analogiche dalla 48 alla 55
 - SUSI_AN_FN_56_63 : Funzioni Analogiche dalla 56 alla 63
-
-------------
-
-# Funzionalita' Extra
-Le seguenti funzionalita' vengono comandate *manualmente* agendo su delle #define nel file **Rcn600.h**
-
-------------
-
-```c
-#define	NOTIFY_RAW_MESSAGE
-```
-Questa define rende disponibile un metodo che permette di *esportare* il messaggio *grezzo* per poterlo manipolare in maniera Esterna alla libreria.</br>
-Stato di *default*: **Disattivata**</br>
-```c
-void notifySusiRawMessage(uint8_t *rawMessage, uint8_t messageLength);
-```
-*notifySusiRawMessage()* viene invocato ogni volta che è presente un messaggio da decodificare
-- Input:
-  - i byte che compongono il messaggio acquisito dalla libreria
-  - la lunghezza del messaggio
-- Restituisce:
-  - Nulla
