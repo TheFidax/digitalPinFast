@@ -42,24 +42,25 @@ Permette di deterimanre, e salvare nella relativa struct, i dati (porta e regist
 ------------
 
 ```c
-void init(void);
+void FastPinMode(pinData pin, uint8_t mode)
 ```
-***oppure***
-```c
-void init(uint8_t SlaveAddress);
-```
-**E' necessario** invocarlo nel 'setup' del codice: avvia la gestione dell'interrupt e inizializza i contatori interni.
-
-Il metodo **senza il parametro** utilizza, *se presente*, il metodo di lettura CVs per determinare l'indirizzo del modulo (*salvato nella CV 897*), se il metodo *e' assente* utilizza indirizzo **di default: 1**.
-
-Il metodo **con il parametro** *permette di specificare l'indirizzo del modulo*: **PUO' AVERE VALORE**: 1, 2, 3. In caso di valore diverso verra' utilizzato il valore **di default: 1**.
+Analogo a pinMode, evita controlli su pin PWM e NON disabilita gli interrupt.</br>
+- Input
+  - la struct contente i dati del pin di cui si vuole modificare la configurazuione
+  - la nuova configurazione del pin
+- Restituisce:
+  - nulla
 
 ------------
 
 ```c
-void process(void);
+uint8_t FastDigitalRead(pinData pin);
 ```
-**E' necessario invocarlo piu' volte possibile** nel 'loop' del codice: decodifica il pacchetto SUSI.
+Analogo a digitalRead, evita controlli su pin PWM e NON disabilita gli interrupt.</br>
+- Input:
+	- la struct contente i dati del pin di cui si vuole leggere lo stato
+- Restituisce:
+  - il valore logico letto sul pin
 
 ------------
 
