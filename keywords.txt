@@ -1,4 +1,4 @@
-FastDigitalPin	KEYWORD1
+digitalPinFast	KEYWORD1
 
 pinData	LITERAL1
 

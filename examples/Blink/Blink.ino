@@ -1,4 +1,4 @@
-#include <FastDigitalPin.h>
+#include <digitalPinFast.h>
 
 pinData pinLed;
 

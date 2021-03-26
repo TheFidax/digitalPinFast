@@ -1,5 +1,5 @@
-#ifndef FAST_DIGITAL_PIN_h
-#define FAST_DIGITAL_PIN_h
+#ifndef DIGITAL_PIN_FAST_h
+#define DIGITAL_PIN_FAST_h
 
 #include <stdint.h>
 #include "arduino.h"
