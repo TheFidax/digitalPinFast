@@ -8,7 +8,7 @@
 # Fast Digital Pin
 Questa libreria e' pensata per quelle applicazione dove *un numero limitato* di pin vengono usati con *molta frequenza*, pertanto velocizzare il loro utilizzo diventa molto importante.
 
-La libreria permette di velocizzare il comando dei pin digitali (pinMode, digitalWrite, digitalRead) andando a calcolare, **una sola volta** ad inizio esecuzioni i parametri richiesti (porta, bit, registri) per i pin su cui si vogliono utilizzare le *funzioni fast*.
+La libreria permette di velocizzare il comando dei pin digitali (pinMode, digitalWrite, digitalRead) andando a calcolare, **una sola volta** ad inizio esecuzione del codice i parametri richiesti (porta, bit, registri) per i pin su cui si vogliono utilizzare le *funzioni fast*.
 
 **ATTENZIONE: Questa velocizzazione viene ottenuta ospitando in SRAM la struct contenente i dati del pin; *ogni struct pesa 6 Byte!*** 
 
@@ -29,6 +29,7 @@ Le seguenti funzioni dalla libreria per sostituire i comandi di *default*.
 void determine_pinData(uint8_t pinNumber, pinData* data);
 ```
 Permette di deterimanre, e salvare nella relativa struct, i dati (porta e registri) del pin.<br/>
+Va utilizzata nel Setup per salvare, in una variabile di tipo pinData *dichiarata Globalmente*, i dati del pin.  
 - Input:
   - il numero del pin di cui ricavare i dati
   - la struct **passata per riferimento** dove salvare i dati
@@ -86,5 +87,7 @@ typedef struct {
 } pinData;
 ```
 Struttura dove vengono salvati i dati dei pin per essere utilizzati dalle funzioni.
+
+Per ogni pin che si vuole utilizzare il *modalita' Fast* e' neccessario dichiarare una variabile globale; nel Setup verranno calcolati i dati del pin e nel Loop sarà possibile utilizzare le funzioni *Fast*.
 
 **Ogni Struct occupa 6 Byte in SRAM.**
