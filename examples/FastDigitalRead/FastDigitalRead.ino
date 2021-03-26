@@ -11,7 +11,7 @@ void setup() {
 
   determine_pinData(PIN_TEST, &pinTest);
   
-  Serial.println("digitalPinFast test");
+  Serial.println("FastDigitalPin test: digitalReadFast");
   Serial.print("sizeof pinData struct: "); Serial.println(sizeof(pinInput));
   Serial.println();
 
