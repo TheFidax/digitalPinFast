@@ -6,7 +6,7 @@
 ------------
 
 # Fast Digital Pin
-Questa libreria e' pensata per quelle applicazione dove pochi pin vengono usati con *molta frequenza*, pertanto velocizzare il loro utilizzo diventa molto importante.
+Questa libreria e' pensata per quelle applicazione dove *un numero limitato* di pin vengono usati con *molta frequenza*, pertanto velocizzare il loro utilizzo diventa molto importante.
 
 La libreria permette di velocizzare il comando dei pin digitali (pinMode, digitalWrite, digitalRead) andando a calcolare, **una sola volta** ad inizio esecuzioni i parametri richiesti (porta, bit, registri) per i pin su cui si vogliono utilizzare le *funzioni fast*.
 
