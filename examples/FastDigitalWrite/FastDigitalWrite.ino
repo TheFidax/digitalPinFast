@@ -1,25 +1,25 @@
 #include <FastDigitalPin.h>
 
-#define PIN_OUTPUT 4
+#define PIN_TEST 4
 
 void setup() {
-  pinData pinOutput;
+  pinData pinTest;
   unsigned long initTime, endTime;
   
   Serial.begin(115200);
   while(!Serial) {}
 
-  determine_pinData(PIN_OUTPUT, &pinOutput);
+  determine_pinData(PIN_TEST, &pinTest);
   
-  Serial.println("FastDigitalPin test");
-  Serial.print("sizeof pinData struct: "); Serial.println(sizeof(pinOutput));
+  Serial.println("FastDigitalPinFast test: digitalWriteFast");
+  Serial.print("sizeof pinData struct: "); Serial.println(sizeof(pinTest));
   Serial.println();
 
-  pinMode(PIN_OUTPUT, INPUT);
+  pinMode(PIN_TEST, INPUT);
 
   Serial.println("Arduino digitalWrite() function:");
   initTime = micros();
-  digitalWrite(PIN_OUTPUT, HIGH);
+  digitalWrite(PIN_TEST, HIGH);
   endTime = micros();
 
   Serial.print("initTime : "); Serial.println(initTime);
@@ -31,7 +31,7 @@ void setup() {
 
   Serial.println("FastDigitalWrite() function:");
   initTime = micros();
-  FastDigitalWrite(pinOutput, HIGH);
+  digitalWriteFast(pinTest, HIGH);
   endTime = micros();
 
   Serial.print("initTime : "); Serial.println(initTime);
