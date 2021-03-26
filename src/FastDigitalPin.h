@@ -29,7 +29,7 @@ void determine_pinData(uint8_t pinNumber, pinData* data);
 *	Restituisce:
 *		- nulla
 */
-void FastPinMode(pinData pin, uint8_t mode);
+void pinModeFast(pinData pin, uint8_t mode);
 /*
 *	FastDigitalRead() analogo a digitalRead, evita controlli su pin PWM e NON disabilita gli interrupt
 *	Input:
@@ -37,7 +37,7 @@ void FastPinMode(pinData pin, uint8_t mode);
 *	Restituisce:
 *		- il valore logico letto sul pin
 */
-uint8_t FastDigitalRead(pinData pin);
+uint8_t digitalReadFast(pinData pin);
 /*
 *	FastDigitalWrite() analogo a digitalWrite, evita controlli su pin PWM e NON disabilita gli interrupt
 *	Input:
@@ -46,6 +46,6 @@ uint8_t FastDigitalRead(pinData pin);
 *	Restituisce:
 *		- nulla
 */
-void FastDigitalWrite(pinData pin, uint8_t val);
+void digitalWriteFast(pinData pin, uint8_t val);
 
 #endif
