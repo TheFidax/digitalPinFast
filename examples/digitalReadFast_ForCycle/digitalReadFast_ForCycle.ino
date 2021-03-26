@@ -1,38 +1,41 @@
 #include <FastDigitalPin.h>
 
-#define PIN_OUTPUT 4
+#define PIN_TEST 4
 
 void setup() {
-  pinData pinOutput;
+  pinData pinTest;
   unsigned long initTime, endTime;
   
   Serial.begin(115200);
   while(!Serial) {}
 
-  determine_pinData(PIN_OUTPUT, &pinOutput);
+  determine_pinData(PIN_TEST, &pinTest);
   
-  Serial.println("FastDigitalPin test");
-  Serial.print("sizeof pinData struct: "); Serial.println(sizeof(pinOutput));
+  Serial.println("FastDigitalPin test: digitalReadFast in 255 cycles");
+  Serial.print("sizeof pinData struct: "); Serial.println(sizeof(pinTest));
   Serial.println();
 
-  pinMode(PIN_OUTPUT, INPUT);
+  pinMode(PIN_TEST, INPUT);
 
-  Serial.println("Arduino pinMode() function:");
+  Serial.println("Arduino digitalRead() function:");
   initTime = micros();
-  pinMode(PIN_OUTPUT, OUTPUT);
+  for(uint8_t i = 0; i < 255; ++i) {
+    digitalRead(PIN_TEST);
+  }
   endTime = micros();
 
   Serial.print("initTime : "); Serial.println(initTime);
   Serial.print("endTime : "); Serial.println(endTime);
   Serial.print("Time : "); Serial.println(endTime - initTime);
   Serial.println();
-
-  pinMode(PIN_OUTPUT, INPUT);
+ 
   delay(2000);
 
-  Serial.println("FastPinMode() function:");
+  Serial.println("digitalReadFast() function:");
   initTime = micros();
-  FastPinMode(pinOutput, OUTPUT);
+  for(uint8_t i = 0; i < 255; ++i) {
+    digitalReadFast(pinTest);
+  }
   endTime = micros();
 
   Serial.print("initTime : "); Serial.println(initTime);
@@ -40,20 +43,19 @@ void setup() {
   Serial.print("Time : "); Serial.println(endTime - initTime);
   Serial.println();
 
-  pinMode(PIN_OUTPUT, INPUT);
   delay(2000);
 
   Serial.println("register function:"); //D4 = PD4 
   initTime = micros();
-  DDRD = B00010000;
+  for(uint8_t i = 0; i < 255; ++i) {
+    uint8_t pinValue = bitRead(PIND, 4);
+  }
   endTime = micros();
 
   Serial.print("initTime : "); Serial.println(initTime);
   Serial.print("endTime : "); Serial.println(endTime);
   Serial.print("Time : "); Serial.println(endTime - initTime);
   Serial.println();
-
-  pinMode(PIN_OUTPUT, INPUT);
 }
 
 void loop() {

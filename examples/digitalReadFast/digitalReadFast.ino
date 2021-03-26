@@ -11,7 +11,7 @@ void setup() {
 
   determine_pinData(PIN_TEST, &pinTest);
   
-  Serial.println("FastDigitalPin test: digitalReadFast in 255 cycles");
+  Serial.println("FastDigitalPin test: digitalReadFast");
   Serial.print("sizeof pinData struct: "); Serial.println(sizeof(pinTest));
   Serial.println();
 
@@ -19,9 +19,7 @@ void setup() {
 
   Serial.println("Arduino digitalRead() function:");
   initTime = micros();
-  for(uint8_t i = 0; i < 255; ++i) {
-    digitalRead(PIN_TEST);
-  }
+  digitalRead(PIN_TEST);
   endTime = micros();
 
   Serial.print("initTime : "); Serial.println(initTime);
@@ -33,9 +31,7 @@ void setup() {
 
   Serial.println("digitalReadFast() function:");
   initTime = micros();
-  for(uint8_t i = 0; i < 255; ++i) {
-    FastDigitalRead(pinTest);
-  }
+  digitalReadFast(pinTest);
   endTime = micros();
 
   Serial.print("initTime : "); Serial.println(initTime);
@@ -47,9 +43,7 @@ void setup() {
 
   Serial.println("register function:"); //D4 = PD4 
   initTime = micros();
-  for(uint8_t i = 0; i < 255; ++i) {
-    uint8_t pinValue = bitRead(PIND, 4);
-  }
+  uint8_t pinValue = bitRead(PIND, 4);
   endTime = micros();
 
   Serial.print("initTime : "); Serial.println(initTime);

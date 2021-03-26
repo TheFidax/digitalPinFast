@@ -5,7 +5,7 @@ pinData pinLed;
 void setup() {
     determine_pinData(LED_BUILTIN, &pinLed);
 
-    FastPinMode(pinLed, OUTPUT);
+    pinModeFast(pinLed, OUTPUT);
 }
 
 // the loop function runs over and over again forever

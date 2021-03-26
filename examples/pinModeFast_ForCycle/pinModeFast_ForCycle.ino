@@ -11,16 +11,16 @@ void setup() {
 
   determine_pinData(PIN_TEST, &pinTest);
   
-  Serial.println("FFastDigitalPin test: digitalWriteFast in 255 cycles");
+  Serial.println("FastDigitalPin test: pinModeFast in 255 cycles");
   Serial.print("sizeof pinData struct: "); Serial.println(sizeof(pinTest));
   Serial.println();
 
   pinMode(PIN_TEST, INPUT);
 
-  Serial.println("Arduino digitalWrite() function:");
+  Serial.println("Arduino pinMode() function:");
   initTime = micros();
   for(uint8_t i = 0; i < 255; ++i) {
-    digitalWrite(PIN_TEST, HIGH);
+    pinMode(PIN_TEST, OUTPUT);
   }
   endTime = micros();
 
@@ -28,13 +28,14 @@ void setup() {
   Serial.print("endTime : "); Serial.println(endTime);
   Serial.print("Time : "); Serial.println(endTime - initTime);
   Serial.println();
- 
+
+  pinMode(PIN_TEST, INPUT);
   delay(2000);
 
-  Serial.println("digitalWriteFast() function:");
+  Serial.println("pinModeFast() function:");
   initTime = micros();
   for(uint8_t i = 0; i < 255; ++i) {
-    FastDigitalWrite(pinTest, HIGH);
+    pinModeFast(pinTest, OUTPUT);
   }
   endTime = micros();
 
@@ -43,12 +44,13 @@ void setup() {
   Serial.print("Time : "); Serial.println(endTime - initTime);
   Serial.println();
 
+  pinMode(PIN_TEST, INPUT);
   delay(2000);
 
   Serial.println("register function:"); //D4 = PD4 
   initTime = micros();
   for(uint8_t i = 0; i < 255; ++i) {
-    PORTD = B00010000;
+    DDRD = B00010000;
   }
   endTime = micros();
 
@@ -56,6 +58,8 @@ void setup() {
   Serial.print("endTime : "); Serial.println(endTime);
   Serial.print("Time : "); Serial.println(endTime - initTime);
   Serial.println();
+
+  pinMode(PIN_TEST, INPUT);
 }
 
 void loop() {

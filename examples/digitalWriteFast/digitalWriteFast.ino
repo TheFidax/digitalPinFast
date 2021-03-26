@@ -29,7 +29,7 @@ void setup() {
 
   delay(2000);
 
-  Serial.println("FastDigitalWrite() function:");
+  Serial.println("digitalWriteFast() function:");
   initTime = micros();
   digitalWriteFast(pinTest, HIGH);
   endTime = micros();
