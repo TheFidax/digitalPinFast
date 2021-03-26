@@ -39,7 +39,7 @@ Va utilizzata nel Setup per salvare, in una variabile di tipo pinData *dichiarat
 ------------
 
 ```c
-void FastPinMode(pinData pin, uint8_t mode)
+void pinModeFast(pinData pin, uint8_t mode)
 ```
 Analogo a pinMode, evita controlli su pin PWM e NON disabilita gli interrupt.</br>
 - Input
@@ -51,7 +51,7 @@ Analogo a pinMode, evita controlli su pin PWM e NON disabilita gli interrupt.</b
 ------------
 
 ```c
-uint8_t FastDigitalRead(pinData pin);
+uint8_t digitalReadFast(pinData pin);
 ```
 Analogo a digitalRead, evita controlli su pin PWM e NON disabilita gli interrupt.</br>
 - Input:
@@ -62,7 +62,7 @@ Analogo a digitalRead, evita controlli su pin PWM e NON disabilita gli interrupt
 ------------
 
 ```c
-void FastDigitalWrite(pinData pin, uint8_t val);
+void digitalWriteFast(pinData pin, uint8_t val);
 ```
 Analogo a digitalWrite, evita controlli su pin PWM e NON disabilita gli interrupt.</br>
 - Input:
