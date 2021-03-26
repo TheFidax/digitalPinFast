@@ -12,7 +12,7 @@ void setup() {
   determine_pinData(PIN_TEST, &pinTest);
   
   Serial.println("FastDigitalPin test: digitalReadFast in 255 cycles");
-  Serial.print("sizeof pinData struct: "); Serial.println(sizeof(pinInput));
+  Serial.print("sizeof pinData struct: "); Serial.println(sizeof(pinTest));
   Serial.println();
 
   pinMode(PIN_TEST, INPUT);
