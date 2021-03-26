@@ -1,26 +1,22 @@
 # Indice
-* [Introduzione Rcn600 SUSI](#Rcn600-SUSI)
+* [Introduzione](#Fast-Digital-Pin)
 * [Funzioni Disponibili](#Funzioni-Disponibili)
 * [Tipi di Dati](#Tipi-di-Dati)
 
 ------------
 
-# Rcn600 SUSI
-Questa libreria permette di utilizzare una scheda Arduino (o un microcontrollore tramite Arduino IDE) come Slave per l'interfaccia SUSI.<br/>
-Libreria testata su Arduino UNO.
+# Fast Digital Pin
+Questa libreria e' pensata per quelle applicazione dove pochi pin vengono usati con *molta frequenza*, pertanto velocizzare il loro utilizzo diventa molto importante.
 
-**ATTENZIONE: Alcune schede Arduino funzionano a 3.3v, le interfacce SUSI, *se non specificato*, SONO A 5 VOLT !** 
+La libreria permette di velocizzare il comando dei pin digitali (pinMode, digitalWrite, digitalRead) andando a calcolare, **una sola volta** ad inizio esecuzioni i parametri richiesti (porta, bit, registri) per i pin su cui si vogliono utilizzare le *funzioni fast*.
 
-Per funzionare sono necessari 2 resistori da **470Ω in serie** sulle linee SUSI (Clock e Dati).<br/>
-Data  ---> 470Ω ---> Pin generico (anche di tipo analogico)<br/>
-Clock ---> 470Ω ---> Pin Interrupt<br/>
+**ATTENZIONE: Questa velocizzazione viene ottenuta ospitando in SRAM la struct contenente i dati del pin; *ogni struct pesa 6 Byte!*** 
 
-Maggiori informazioni della specifiva nel fle [RCN-600.pdf](https://github.com/TheFidax/Rcn600/blob/master/RCN-600.pdf).
-
+Le funzioni fornite dalla libreria **non disattivano gli interrupt e non eseguono i controlli sui Timer/PWM**, pertanto il suo utilizzo e' pensato per utenti *piu' esperti*.</br>
 
 **Video Presentazione del Progetto:**</br>
 
-[![Video Presentazione](https://img.youtube.com/vi/VzgkDouOvCY/0.jpg)](http://www.youtube.com/watch?v=VzgkDouOvCY)
+[![Video Presentazione](https://img.youtube.com/vi/xxxxxxx/0.jpg)](http://www.youtube.com/watch?v=xxxxx)
 
 ------------
 
