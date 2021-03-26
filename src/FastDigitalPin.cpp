@@ -11,7 +11,7 @@ void determine_pinData(uint8_t pinNumber, pinData* data) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void FastPinMode(pinData pin, uint8_t mode) {
+void pinModeFast(pinData pin, uint8_t mode) {
     if (mode == INPUT) {
         *pin.pinReg &= ~pin.pinBitMask;
         *pin.pinOut &= ~pin.pinBitMask;
@@ -27,7 +27,7 @@ void FastPinMode(pinData pin, uint8_t mode) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-uint8_t FastDigitalRead(pinData pin) {
+uint8_t digitalReadFast(pinData pin) {
     if (*portInputRegister(pin.pinPort) & (pin.pinBitMask)) {
         return HIGH;
     }
@@ -37,7 +37,7 @@ uint8_t FastDigitalRead(pinData pin) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void FastDigitalWrite(pinData pin, uint8_t val) {
+void digitalWriteFast(pinData pin, uint8_t val) {
     if (val == LOW) {
         *pin.pinOut &= ~pin.pinBitMask;
     }
