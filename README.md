@@ -10,7 +10,8 @@
 
 # Indice
 * [Introduzione](#Fast-Digital-Pin)
-* [Funzioni Disponibili](#Funzioni-Disponibili)
+* [Inizializzazione](#Inizializzazione)
+* [Metodi Disponibili](#Metodi-Disponibili)
 * [Tipi di Dati](#Tipi-di-Dati)
 
 ------------
@@ -18,11 +19,11 @@
 # Fast Digital Pin
 Questa libreria e' pensata per quelle applicazione dove *un numero limitato* di pin vengono usati con *molta frequenza*, pertanto velocizzare il loro utilizzo diventa molto importante.
 
-La libreria permette di velocizzare il comando dei pin digitali (pinMode, digitalWrite, digitalRead) andando a calcolare, **una sola volta** ad inizio esecuzione del codice i parametri richiesti (porta, bit, registri) per i pin su cui si vogliono utilizzare le *funzioni fast*.
+La libreria permette di velocizzare il comando dei pin digitali (pinMode, digitalWrite, digitalRead) andando a calcolare, **una sola volta** al momento della creazione dell'Oggetto i parametri richiesti (porta, bit, registri) per i pin su cui si vogliono utilizzare le *funzioni fast*.
 
-**ATTENZIONE: Questa velocizzazione viene ottenuta ospitando in SRAM la struct contenente i dati del pin; *ogni struct pesa 6 Byte!*** 
+**ATTENZIONE: Questa velocizzazione viene ottenuta ospitando in SRAM l'oggetto contenente i dati del pin; *ogni Oggetto pesa 6 Byte!*** 
 
-Le funzioni fornite dalla libreria **non disattivano gli interrupt e non eseguono i controlli sui Timer/PWM**, pertanto il suo utilizzo e' pensato per utenti *piu' esperti*.</br>
+I meotdi forniti dalla libreria **non disattivano gli interrupt e non eseguono i controlli sui Timer/PWM**, pertanto il suo utilizzo e' pensato per utenti *piu' esperti*.</br>
 
 **Video Presentazione del Progetto:**</br>
 
@@ -30,21 +31,22 @@ Le funzioni fornite dalla libreria **non disattivano gli interrupt e non eseguon
 
 ------------
 
-# Funzioni Disponibili
-Le seguenti funzioni dalla libreria per sostituire i comandi di *default*.
+# Inizializzazione
+L'inizializzazione dell'oggetto avviene al momento della sua Creazione
 
 ------------
 
 ```c
-void determine_pinData(uint8_t pinNumber, pinData* data);
+digitalPinFast(uint8_t pinNumber);
 ```
-Permette di deterimanre, e salvare nella relativa struct, i dati (porta e registri) del pin.<br/>
-Va utilizzata nel Setup per salvare, in una variabile di tipo pinData *dichiarata Globalmente*, i dati del pin.  
-- Input:
-  - il numero del pin di cui ricavare i dati
-  - la struct **passata per riferimento** dove salvare i dati
-- Restituisce:
-  - Nulla
+Dichiarazione dell'Oggetto digitalPinFast, l'argomento da passare e' il numero del pin sul quale creare l'oggetto.
+**Deve essere un pin Digital**.
+
+------------
+
+# Metodi Disponibili
+
+I seguenti metodi sono forniti dalla libreria per sostituire i comandi di *default*.
 
 ------------
 
@@ -83,21 +85,13 @@ Analogo a digitalWrite, evita controlli su pin PWM e NON disabilita gli interrup
 
 ------------
 
-# Tipi di Dati
-I seguenti tipi di dati vengono utilizzati dalle funzioni della libreria.
+```c
+void setNewFastPin(uint8_t pinNumber);
+```
+Serve a modificare il pin a cui e' collegato l'oggetto.
+- Input:
+  - il numero del nuovo pin su cui si vogliono utilizzare i metodi Fast
+- Restituisce:
+  - nulla
 
 ------------
-
-```c
-typedef struct {
-    uint8_t pinPort;
-    uint8_t pinBitMask;
-    volatile uint8_t* pinReg;
-    volatile uint8_t* pinOut;
-} pinData;
-```
-Struttura dove vengono salvati i dati dei pin per essere utilizzati dalle funzioni.
-
-Per ogni pin che si vuole utilizzare il *modalita' Fast* e' neccessario dichiarare una variabile globale; nel Setup verranno calcolati i dati del pin e nel Loop sarà possibile utilizzare le funzioni *Fast*.
-
-**Ogni Struct occupa 6 Byte in SRAM.**
