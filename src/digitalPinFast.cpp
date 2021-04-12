@@ -20,6 +20,13 @@ digitalPinFast::digitalPinFast(uint8_t pinNumber) {
     determine_pinData(pinNumber);
 }
 
+digitalPinFast::~digitalPinFast(void) {
+    pinModeFast(INPUT);
+    
+    _pinReg = NULL;
+    _pinOut = NULL;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  
 void digitalPinFast::setNewFastPin(uint8_t pinNumber) {

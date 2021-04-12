@@ -23,11 +23,20 @@ private:
     void determine_pinData(uint8_t pinNumber);
 
 public:
-    /*  digitalPinFast() dichiarazione dell'oggetto digitalPinFast
+    /*  
+    *   digitalPinFast() dichiarazione dell'oggetto digitalPinFast
     *   Input:
     *       - il numero del pin su cui si vuole creare l'oggetto
     */
     digitalPinFast(uint8_t pinNumber);
+    /*  
+    *   ~digitalPinFast() distruzione dell'Oggetto
+    *   Input:
+    *       - Nulla
+    *   Restituisce:
+    *       - Nulla
+    */
+    ~digitalPinFast(void);
     /*
     *   setNewFastPin() permette di assegnare un nuovo pin ad un oggetto gia' esistente
     *   Input:
