@@ -12,6 +12,7 @@
 * [Introduzione](#Fast-Digital-Pin)
 * [Inizializzazione](#Inizializzazione)
 * [Metodi Disponibili](#Metodi-Disponibili)
+* [Distruzione](#Distruzione)
 * [Tipi di Dati](#Tipi-di-Dati)
 
 ------------
@@ -93,3 +94,12 @@ Serve a modificare il pin a cui e' collegato l'oggetto.
   - nulla
 
 ------------
+
+# Distruzione
+L'oggetto *puo'* essere distrutto.
+
+```c
+~digitalPinFast(void);
+```
+
+Al momento della distruzione **il pin viene messo nello stato di INPUT per evitare danneggiamenti accidentali**.
