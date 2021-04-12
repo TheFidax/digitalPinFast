@@ -51,11 +51,10 @@ I seguenti metodi sono forniti dalla libreria per sostituire i comandi di *defau
 ------------
 
 ```c
-void pinModeFast(pinData pin, uint8_t mode)
+void pinModeFast(uint8_t mode)
 ```
 Analogo a pinMode, evita controlli su pin PWM e NON disabilita gli interrupt.</br>
 - Input
-  - la struct contente i dati del pin di cui si vuole modificare la configurazuione
   - la nuova configurazione del pin
 - Restituisce:
   - nulla
@@ -63,22 +62,21 @@ Analogo a pinMode, evita controlli su pin PWM e NON disabilita gli interrupt.</b
 ------------
 
 ```c
-uint8_t digitalReadFast(pinData pin);
+uint8_t digitalReadFast(void);
 ```
 Analogo a digitalRead, evita controlli su pin PWM e NON disabilita gli interrupt.</br>
 - Input:
-	- la struct contente i dati del pin di cui si vuole leggere lo stato
+  - nulla
 - Restituisce:
   - il valore logico letto sul pin
 
 ------------
 
 ```c
-void digitalWriteFast(pinData pin, uint8_t val);
+void digitalWriteFast(uint8_t val);
 ```
 Analogo a digitalWrite, evita controlli su pin PWM e NON disabilita gli interrupt.</br>
 - Input:
-  - la struct contente i dati del pin di cui si vuole modificare lo stato 
   - il nuovo stato del pin
 - Restituisce:
   - nulla
