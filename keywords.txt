@@ -1,10 +1,8 @@
 digitalPinFast	KEYWORD1
 
-pinData	LITERAL1
-
 //////////////////////// 
 
-determine_pinData	KEYWORD2
+setNewFastPin	KEYWORD2
 pinModeFast	KEYWORD2
 digitalReadFast	KEYWORD2
 digitalWriteFast	KEYWORD2

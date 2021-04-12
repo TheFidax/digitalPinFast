@@ -3,16 +3,14 @@
 #define PIN_TEST 4
 
 void setup() {
-  pinData pinTest;
+  digitalPinFast pinTest(PIN_TEST);
   unsigned long initTime, endTime;
   
   Serial.begin(115200);
   while(!Serial) {}
 
-  determine_pinData(PIN_TEST, &pinTest);
-  
   Serial.println("FastDigitalPin test: digitalReadFast");
-  Serial.print("sizeof pinData struct: "); Serial.println(sizeof(pinTest));
+  Serial.print("sizeof digitalPinFast Object: "); Serial.println(sizeof(pinTest));
   Serial.println();
 
   pinMode(PIN_TEST, INPUT);
@@ -31,7 +29,7 @@ void setup() {
 
   Serial.println("digitalReadFast() function:");
   initTime = micros();
-  digitalReadFast(pinTest);
+  pinTest.digitalReadFast();
   endTime = micros();
 
   Serial.print("initTime : "); Serial.println(initTime);

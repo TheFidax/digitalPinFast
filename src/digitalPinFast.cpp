@@ -2,33 +2,50 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void determine_pinData(uint8_t pinNumber, pinData* data) {
-    data->pinBitMask = digitalPinToBitMask(pinNumber);
-    data->pinPort = digitalPinToPort(pinNumber);
-    data->pinReg = portModeRegister(data->pinPort);
-    data->pinOut = portOutputRegister(data->pinPort);
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-void pinModeFast(pinData pin, uint8_t mode) {
-    if (mode == INPUT) {
-        *pin.pinReg &= ~pin.pinBitMask;
-        *pin.pinOut &= ~pin.pinBitMask;
-    }
-    else if (mode == INPUT_PULLUP) {
-        *pin.pinReg &= ~pin.pinBitMask;
-        *pin.pinOut |= pin.pinBitMask;
+void digitalPinFast::determine_pinData(uint8_t pinNumber) {
+    if (pinNumber < NUM_DIGITAL_PINS) {
+        _pinBitMask = digitalPinToBitMask(pinNumber);
+        _pinPort = digitalPinToPort(pinNumber);
+        _pinReg = portModeRegister(_pinPort);
+        _pinOut = portOutputRegister(_pinPort);
     }
     else {
-        *pin.pinReg |= pin.pinBitMask;
+        determine_pinData(LED_BUILTIN);
     }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-uint8_t digitalReadFast(pinData pin) {
-    if (*portInputRegister(pin.pinPort) & (pin.pinBitMask)) {
+digitalPinFast::digitalPinFast(uint8_t pinNumber) {
+    determine_pinData(pinNumber);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+void digitalPinFast::setNewFastPin(uint8_t pinNumber) {
+    determine_pinData(pinNumber);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void digitalPinFast::pinModeFast(uint8_t mode) {
+    if (mode == INPUT) {
+        *_pinReg &= ~_pinBitMask;
+        *_pinOut &= ~_pinBitMask;
+    }
+    else if (mode == INPUT_PULLUP) {
+        *_pinReg &= ~_pinBitMask;
+        *_pinOut |= _pinBitMask;
+    }
+    else {
+        *_pinReg |= _pinBitMask;
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+uint8_t digitalPinFast::digitalReadFast(void) {
+    if (*portInputRegister(_pinPort) & (_pinBitMask)) {
         return HIGH;
     }
 
@@ -37,12 +54,12 @@ uint8_t digitalReadFast(pinData pin) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void digitalWriteFast(pinData pin, uint8_t val) {
+void digitalPinFast::digitalWriteFast(uint8_t val) {
     if (val == LOW) {
-        *pin.pinOut &= ~pin.pinBitMask;
+        *_pinOut &= ~_pinBitMask;
     }
     else {
-        *pin.pinOut |= pin.pinBitMask;
+        *_pinOut |= _pinBitMask;
     }
 }
 

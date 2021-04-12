@@ -1,17 +1,15 @@
 #include <digitalPinFast.h>
 
-pinData pinLed;
+digitalPinFast pinLed(LED_BUILTIN);
 
 void setup() {
-    determine_pinData(LED_BUILTIN, &pinLed);
-
-    pinModeFast(pinLed, OUTPUT);
+    pinLed.pinModeFast(OUTPUT);
 }
 
 // the loop function runs over and over again forever
 void loop() {
-    digitalWriteFast(pinLed, HIGH);   // turn the LED on (HIGH is the voltage level)
+    pinLed.digitalWriteFast(HIGH);   // turn the LED on (HIGH is the voltage level)
     delay(1000);                       // wait for a second
-    digitalWriteFast(pinLed, LOW);    // turn the LED off by making the voltage LOW
+    pinLed.digitalWriteFast(LOW);    // turn the LED off by making the voltage LOW
     delay(1000);                       // wait for a second
 }
