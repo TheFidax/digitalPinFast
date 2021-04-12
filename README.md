@@ -13,7 +13,6 @@
 * [Inizializzazione](#Inizializzazione)
 * [Metodi Disponibili](#Metodi-Disponibili)
 * [Distruzione](#Distruzione)
-* [Tipi di Dati](#Tipi-di-Dati)
 
 ------------
 
