@@ -1,12 +1,8 @@
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/TheFidax/digitalPinFast)
 ![GitHub Release Date](https://img.shields.io/github/release-date/TheFidax/digitalPinFast?color=blue&label=last%20release)
 ![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/TheFidax/digitalPinFast/latest?color=orange)
-![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fgithub.com%2FTheFidax%2FdigitalPinFast)
-[![GitHub issues](https://img.shields.io/github/issues/TheFidax/Rcn600)](https://github.com/TheFidax/digitalPinFast/issues)
-[![Fork](https://img.shields.io/github/forks/TheFidax/digitalPinFast)](#)
-[![Stars](https://img.shields.io/github/stars/TheFidax/digitalPinFast)](#)
+[![arduino-library-badge](https://www.ardu-badge.com/badge/digitalPinFast.svg)](https://www.ardu-badge.com/digitalPinFast)
 [![License](https://img.shields.io/github/license/TheFidax/digitalPinFast)](#)
-[![Total Downloads](https://img.shields.io/github/downloads/TheFidax/digitalPinFast/total)](#)
 
 # Indice
 * [Introduzione](#Fast-Digital-Pin)
