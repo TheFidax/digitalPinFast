@@ -1,10 +1,10 @@
 #ifndef DIGITAL_PIN_FAST_h
 #define DIGITAL_PIN_FAST_h
 
-#include <stdint.h>
+#include <stdint.h> // Libreria per i dati uintX_t
 
-#include <Arduino.h>
-#include <pins_arduino.h>
+#include <Arduino.h> // Libreria base dell'ecosistema Arduino
+#include <pins_arduino.h> // Definizioni dei pin nell'ecosistema di Arduino
 
 class digitalPinFast {
 private:
