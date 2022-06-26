@@ -2,8 +2,9 @@
 #define DIGITAL_PIN_FAST_h
 
 #include <stdint.h>
-#include "arduino.h"
-#include "pins_arduino.h"
+
+#include <Arduino.h>
+#include <pins_arduino.h>
 
 class digitalPinFast {
 private:
